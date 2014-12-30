@@ -1,0 +1,130 @@
+  [1m[36m (27.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (8.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePosts (20141230180023)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141230180023"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Migrating to CreateComments (20141230180526)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "body" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141230180526"]]
+  [1m[35m (6.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-30 12:25:08 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 35ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-12-30 12:26:08 -0600
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 870ms (Views: 868.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/application-69d2bd631ec1ebfe38b65250fc3c9271.css?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/scaffolds-b00ba96c413a8055ba1c1a1de05b558d.css?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2014-12-30 12:26:09 -0600
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-12-30 12:26:13 -0600
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (17.3ms)
+  Rendered posts/new.html.erb within layouts/application (22.1ms)
+Completed 200 OK in 92ms (Views: 86.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2014-12-30 12:26:40 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sec+yJRAB4ea6GJmbXWnwdlEVGFJGYGn2iq5OZe22Y3ybE/J4CNaC0gLTvcnXlL0+Nv7PsAj6OFzPpmPcBwdbA==", "post"=>{"title"=>"My new post", "body"=>"This is my first post !"}, "commit"=>"Create Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "My new post"], ["body", "This is my first post !"], ["created_at", "2014-12-30 18:26:40.368463"], ["updated_at", "2014-12-30 18:26:40.368463"]]
+  [1m[36m (20.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 29ms (ActiveRecord: 21.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2014-12-30 12:26:40 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 72ms (Views: 65.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-12-30 12:26:45 -0600
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 68ms (Views: 67.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/comments" for 127.0.0.1 at 2014-12-30 12:27:35 -0600
+Processing by CommentsController#index as HTML
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments"
+  Rendered comments/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 109ms (Views: 105.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2014-12-30 12:27:37 -0600
+Processing by CommentsController#new as HTML
+  Rendered comments/_form.html.erb (3.7ms)
+  Rendered comments/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 76ms (Views: 72.0ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2014-12-30 12:28:15 -0600
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"21FyOabrs/ZEmqP9cdABlVs3lES/75o4kyYKHexaJF2Y2gM40ojuepZ5j2w7+/Sgeqg7GzbV8346MiqrC/DgvA==", "comment"=>{"post_id"=>"1", "body"=>"Hi this is my first comment and i'm excited"}, "commit"=>"Create Comment"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("post_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["post_id", 1], ["body", "Hi this is my first comment and i'm excited"], ["created_at", "2014-12-30 18:28:15.982918"], ["updated_at", "2014-12-30 18:28:15.982918"]]
+  [1m[36m (21.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/comments/1
+Completed 302 Found in 27ms (ActiveRecord: 22.0ms)
+
+
+Started GET "/comments/1" for 127.0.0.1 at 2014-12-30 12:28:16 -0600
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mComment Load (0.2ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered comments/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 60ms (Views: 58.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/comments" for 127.0.0.1 at 2014-12-30 12:28:18 -0600
+Processing by CommentsController#index as HTML
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 62ms (Views: 61.2ms | ActiveRecord: 0.2ms)
