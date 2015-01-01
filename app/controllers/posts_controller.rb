@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, except: [:index, :show]
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
   end
-
+ 
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -58,7 +59,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
-    end
+    end  
   end
 
   private
@@ -70,5 +71,11 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def authenticate
+       authenticate_or_request_with_http_basic do |name, password|
+        name == "admin" && password == "secret"
+      end
     end
 end
