@@ -2712,3 +2712,503 @@ Processing by PostsController#edit as HTML
   [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
 Filter chain halted as :authenticate rendered or redirected
 Completed 401 Unauthorized in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/" for 127.0.0.1 at 2015-01-01 20:37:50 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 28ms
+
+ActionView::Template::Error (undefined method `[]' for true:TrueClass):
+    21: 	 <% end %>
+    22: </div>
+    23: 
+    24: <%= form_for([@post, Comment.new], remote = true) do |f| %>
+    25: 	<p><%= f.label :body, "New Comment" %> <br/>
+    26: 		<%= f.text_area :body %>
+    27: 	</p>
+  app/views/posts/show.html.erb:24:in `_app_views_posts_show_html_erb___233447391991026879_70135592259860'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (5.6ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.3ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (22.8ms)
+
+
+Started GET "/posts/1/" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 51ms (Views: 49.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/scaffolds-ff3543363962efe49b42574037d8a2a4.css?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/application-4252930e43ba5fec2afbd1b02fb79e27.css?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2015-01-01 20:38:11 -0600
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:38:25 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"This is ajax request"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "This is ajax request"], ["post_id", 1], ["created_at", "2015-01-02 02:38:25.923678"], ["updated_at", "2015-01-02 02:38:25.923678"]]
+  [1m[35m (23.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  Rendered comments/create.js.erb (2.9ms)
+Completed 500 Internal Server Error in 37ms
+
+ActionView::Template::Error (Missing partial comments/_comment with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates"
+  * "/home/panindra/Desktop/javascript/blog/app/views"
+):
+    1: var new_comment = $("<%= escape_javascript(render(:partial => @comment)) %>").hide();
+    2: $('#comments').prepend(new_comment);
+    3: $('#comment_<%= @comment.id %>').fadeIn('slow');
+    4: $('#new_comment')[0].reset();
+  app/views/comments/create.js.erb:1:in `_app_views_comments_create_js_erb___1690214568261164346_70135440262300'
+  app/controllers/comments_controller.rb:30:in `create'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.text.erb (7.4ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:38:30 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"This is ajax request"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "This is ajax request"], ["post_id", 1], ["created_at", "2015-01-02 02:38:30.222399"], ["updated_at", "2015-01-02 02:38:30.222399"]]
+  [1m[35m (9.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  Rendered comments/create.js.erb (3.1ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (Missing partial comments/_comment with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates"
+  * "/home/panindra/Desktop/javascript/blog/app/views"
+):
+    1: var new_comment = $("<%= escape_javascript(render(:partial => @comment)) %>").hide();
+    2: $('#comments').prepend(new_comment);
+    3: $('#comment_<%= @comment.id %>').fadeIn('slow');
+    4: $('#new_comment')[0].reset();
+  app/views/comments/create.js.erb:1:in `_app_views_comments_create_js_erb___1690214568261164346_70135440262300'
+  app/controllers/comments_controller.rb:30:in `create'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.text.erb (7.2ms)
+
+
+Started GET "/posts/1/" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/scaffolds-ff3543363962efe49b42574037d8a2a4.css?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/application-4252930e43ba5fec2afbd1b02fb79e27.css?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2015-01-01 20:40:27 -0600
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2015-01-01 20:40:40 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2015-01-01 20:40:48 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2015-01-01 20:40:55 -0600
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_form.html.erb (2.0ms)
+  Rendered posts/edit.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 78ms (Views: 76.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-01 20:41:00 -0600
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 48ms (Views: 47.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2015-01-01 20:41:06 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 52ms (Views: 51.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:41:18 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (17.2ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (undefined method `comment_path' for #<#<Class:0x007f93600325c8>:0x007f936de997a8>):
+    16:       <tr>
+    17:         <td><%= comment.post_id %></td>
+    18:         <td><%= comment.body %></td>
+    19:         <td><%= link_to 'Show', comment %></td>
+    20:         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    21:         <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  app/views/comments/index.html.erb:19:in `block in _app_views_comments_index_html_erb__4310480480295087251_70135590443340'
+  app/views/comments/index.html.erb:15:in `_app_views_comments_index_html_erb__4310480480295087251_70135590443340'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (5.4ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (21.4ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 65ms (Views: 63.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application-4252930e43ba5fec2afbd1b02fb79e27.css?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started GET "/assets/scaffolds-ff3543363962efe49b42574037d8a2a4.css?body=1" for 127.0.0.1 at 2015-01-01 20:41:27 -0600
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:41:50 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"new ajax request"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["body", "new ajax request"], ["post_id", 1], ["created_at", "2015-01-02 02:41:50.372970"], ["updated_at", "2015-01-02 02:41:50.372970"]]
+  [1m[36m (27.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  Rendered comments/create.js.erb (2.8ms)
+Completed 500 Internal Server Error in 37ms
+
+ActionView::Template::Error (Missing partial comments/_comment with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates"
+  * "/home/panindra/Desktop/javascript/blog/app/views"
+):
+    1: var new_comment = $("<%= escape_javascript(render(:partial => @comment)) %>").hide();
+    2: $('#comments').prepend(new_comment);
+    3: $('#comment_<%= @comment.id %>').fadeIn('slow');
+    4: $('#new_comment')[0].reset();
+  app/views/comments/create.js.erb:1:in `_app_views_comments_create_js_erb___1690214568261164346_70135440262300'
+  app/controllers/comments_controller.rb:30:in `create'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.text.erb (7.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 59ms (Views: 57.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/scaffolds-ff3543363962efe49b42574037d8a2a4.css?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/application-4252930e43ba5fec2afbd1b02fb79e27.css?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2015-01-01 20:49:15 -0600
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:49:26 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"new ajax request"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["body", "new ajax request"], ["post_id", 1], ["created_at", "2015-01-02 02:49:26.556674"], ["updated_at", "2015-01-02 02:49:26.556674"]]
+  [1m[36m (24.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  Rendered comments/create.js.erb (2.9ms)
+Completed 500 Internal Server Error in 35ms
+
+ActionView::Template::Error (Missing partial comments/_comment with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates"
+  * "/home/panindra/Desktop/javascript/blog/app/views"
+):
+    1: /*var new_comment = $("<%= escape_javascript(render(:partial => @comment)) %>").hide();
+    2: $('#comments').prepend(new_comment);
+    3: $('#comment_<%= @comment.id %>').fadeIn('slow');
+    4: $('#new_comment')[0].reset();*/
+  app/views/comments/create.js.erb:1:in `_app_views_comments_create_js_erb___1690214568261164346_70135592424000'
+  app/controllers/comments_controller.rb:30:in `create'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.text.erb (7.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 55ms (Views: 53.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/scaffolds-ff3543363962efe49b42574037d8a2a4.css?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/application-4252930e43ba5fec2afbd1b02fb79e27.css?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2015-01-01 20:50:50 -0600
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:50:56 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"new ajax request"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["body", "new ajax request"], ["post_id", 1], ["created_at", "2015-01-02 02:50:56.170158"], ["updated_at", "2015-01-02 02:50:56.170158"]]
+  [1m[36m (24.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  Rendered comments/create.js.erb (2.6ms)
+Completed 500 Internal Server Error in 34ms
+
+ActionView::Template::Error (Missing partial comments/_comment with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates"
+  * "/home/panindra/Desktop/javascript/blog/app/views"
+):
+    1: /*var new_comment = $("<%= escape_javascript(render(:partial => @comment)) %>").hide();
+    2: $('#comments').prepend(new_comment);
+    3: $('#comment_<%= @comment.id %>').fadeIn('slow');
+    4: $('#new_comment')[0].reset();*/
+  app/views/comments/create.js.erb:1:in `_app_views_comments_create_js_erb___1690214568261164346_70135585039280'
+  app/controllers/comments_controller.rb:30:in `create'
+
+
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.text.erb (0.8ms)
+  Rendered /home/panindra/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.text.erb (8.1ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 61ms (Views: 59.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/comments-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/posts-069e88c06b889877799890854d7f4c40.css?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/scaffolds-ff3543363962efe49b42574037d8a2a4.css?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/application-4252930e43ba5fec2afbd1b02fb79e27.css?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/comments-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/posts-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for 127.0.0.1 at 2015-01-01 20:52:38 -0600
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:52:41 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"new ajax request"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["body", "new ajax request"], ["post_id", 1], ["created_at", "2015-01-02 02:52:41.623729"], ["updated_at", "2015-01-02 02:52:41.623729"]]
+  [1m[36m (17.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  Rendered comments/_comment.html.erb (0.8ms)
+  Rendered comments/create.js.erb (2.5ms)
+Completed 200 OK in 27ms (Views: 5.2ms | ActiveRecord: 18.1ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2015-01-01 20:53:01 -0600
+Processing by CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"Learned ajax request in rails!!"}, "commit"=>"Add Comment", "post_id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("body", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["body", "Learned ajax request in rails!!"], ["post_id", 1], ["created_at", "2015-01-02 02:53:01.925045"], ["updated_at", "2015-01-02 02:53:01.925045"]]
+  [1m[36m (17.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  Rendered comments/_comment.html.erb (0.2ms)
+  Rendered comments/create.js.erb (1.2ms)
+Completed 200 OK in 26ms (Views: 3.5ms | ActiveRecord: 18.1ms)
